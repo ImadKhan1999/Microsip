@@ -66,3 +66,14 @@ commands, results, problems.
   (18/18), assembleDebug + assembleRelease, lint all passed in ~7 minutes.
 * Artifact `MicroSIP-apk-6` (283 MB zip: universal + 4 per-ABI release APKs + universal debug APK).
 * Not yet run on a device. Next: manual test plan in TESTING.md.
+
+## 2026-10-22 16:20 UTC — Claude — Real SIP server test harness
+
+* Imad shared a real account (sipup.org: user 13811, domain sip.sipup.org, server/proxy 162.19.138.146, TLS) via the
+  project chat (desktop MicroSIP screenshot). The password is NOT stored in the repo.
+* The agent sandbox cannot open TCP to 162.19.138.146:5060/5061 (egress allows HTTPS proxying only), so the
+  test must run on GitHub Actions.
+* Added `tools/sip_register_test.py` (dependency-free REGISTER with digest auth over UDP/TCP/TLS; binds a
+  throw-away contact then unregisters it) and CI job `sip-smoke` which runs it when the `SIP_PASSWORD`
+  repository secret exists. Account details other than the password are in the workflow env.
+* README: mapping table from desktop MicroSIP account fields to this app's fields.

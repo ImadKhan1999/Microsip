@@ -8,7 +8,9 @@
 | Android lint | `./gradlew lintDebug` | report uploaded as CI artifact `reports-<run>` (non-blocking) |
 | Build | `./gradlew assembleDebug assembleRelease` | the app compiles against the real Linphone SDK |
 
-CI runs all three on every push. Results: see the run summary and `reports-<run>` artifact.
+| Real-server REGISTER | CI job `sip-smoke` (needs repo secret `SIP_PASSWORD`) or `SIP_PASSWORD=… python3 tools/sip_register_test.py --user 13811 --domain sip.sipup.org --proxy 162.19.138.146 --transport tls` | server reachable, TLS handshake/cert, digest credentials; registers a throw-away contact then removes it |
+
+CI runs all of these on every push. Results: see the run summary and `reports-<run>` artifact.
 
 ## Manual test plan (real device + PBX)
 

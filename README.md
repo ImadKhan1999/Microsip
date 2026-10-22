@@ -15,6 +15,20 @@ background service so calls ring when the app is closed.
 2. Tap the top bar → *Manage accounts* → **+**. Enter SIP server/domain, username, password (and transport).
 3. The dot in the top bar turns green when registered. Dial from the keypad.
 
+## Coming from desktop MicroSIP
+
+| MicroSIP field | This app (Account › Show advanced) |
+|---|---|
+| Domain | **SIP server / domain** |
+| SIP Server / SIP Proxy (when they are an IP or host different from the domain) | **Proxy** (+ turn on *Use proxy as outbound proxy*) |
+| Username | Username |
+| Login | Auth ID / login (leave empty if same as username) |
+| Password, Display Name, Voicemail Number, Dialing Prefix | same names |
+| Transport | Transport |
+| Media Encryption | Media encryption (SRTP = MicroSIP "SRTP") |
+| Register Refresh | Registration expiry |
+| Publish Presence, ICE | same names |
+
 ## Documentation
 
 Everything about how the app is built, tested and where work stands is in [`docs/`](docs/README.md) –

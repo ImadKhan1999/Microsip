@@ -84,3 +84,29 @@ jobs:
             Automated build from ${{ github.sha }}.
             Install **MicroSIP-…-universal-release.apk** on any phone, or the arm64-v8a file for most modern phones (smaller).
             See docs/HANDOFF.md for the current feature status.
+
+  # Real-server check: registers the test account over UDP, TCP and TLS with tools/sip_register_test.py.
+  # Runs only when the repository secret SIP_PASSWORD exists (Settings > Secrets and variables > Actions).
+  sip-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SIP_PASSWORD: ${{ secrets.SIP_PASSWORD }}
+      SIP_USER: '13811'
+      SIP_DOMAIN: sip.sipup.org
+      SIP_PROXY: 162.19.138.146
+    steps:
+      - uses: actions/checkout@v4
+      - name: Register (UDP, TCP, TLS)
+        if: env.SIP_PASSWORD != ''
+        run: |
+          rc=0
+          for t in tls tcp udp; do
+            echo "::group::$t"
+            python3 tools/sip_register_test.py --user "$SIP_USER" --domain "$SIP_DOMAIN" --proxy "$SIP_PROXY" --transport $t || { [ $t = tls ] && rc=1; }
+            echo "::endgroup::"
+          done
+          exit $rc
+      - name: Skipped (no SIP_PASSWORD secret)
+        if: env.SIP_PASSWORD == ''
+        run: echo "Add the SIP_PASSWORD repository secret to run the real-server registration test."
