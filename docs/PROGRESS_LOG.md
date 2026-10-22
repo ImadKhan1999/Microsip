@@ -41,3 +41,15 @@ commands, results, problems.
 * CI: `.github/workflows/android.yml` – unit tests, assembleDebug + assembleRelease, lint (non-blocking),
   artifacts, pre-release on `main`.
 * Commit `1724235` pushed; CI run #1 started.
+
+## 2026-10-22 14:43 UTC — Claude — CI run 1 result
+
+* `compileDebugKotlin` **succeeded on the first attempt** (only deprecation warnings: `Factory.setDebugMode`,
+  `Call.isRecording`, `Core.getChatRoom`, `ChatRoom.getHistory(int)`, `ChatMessage.isFileTransfer`,
+  `Content.stringBuffer`, two non-AutoMirrored icons). They still work in 5.5; migrate later.
+* Unit tests: 18 run, 1 failed — `DialogInfoTest.earlyInitiatorIsBusy`. Cause: regex `dialog\b` also matched the
+  `<dialog-info>` root element (`\b` sits between `g` and `-`), so the opening tag examined for `direction` was
+  the root. Fix: `dialog(?=[\s>])`. Verified the corrected logic with an equivalent Python regex locally: all 7
+  DialogInfo cases give the expected result.
+* CI trigger changed: pushes to non-main branches no longer build on `push` (they build via their PR) to stop
+  duplicate runs.

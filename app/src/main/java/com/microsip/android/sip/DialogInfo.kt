@@ -9,7 +9,8 @@ object DialogInfo {
 
     enum class BlfState { IDLE, RINGING, BUSY, UNKNOWN }
 
-    private val dialogRe = Regex("<(?:\\w+:)?dialog\\b[^>]*>(.*?)</(?:\\w+:)?dialog>", RegexOption.DOT_MATCHES_ALL)
+    // "dialog" must be followed by whitespace or '>' so the <dialog-info> root element is not matched.
+    private val dialogRe = Regex("<(?:\\w+:)?dialog(?=[\\s>])[^>]*>(.*?)</(?:\\w+:)?dialog>", RegexOption.DOT_MATCHES_ALL)
     private val stateRe = Regex("<(?:\\w+:)?state\\b[^>]*>\\s*([a-zA-Z]+)\\s*</(?:\\w+:)?state>")
     private val dirRe = Regex("direction\\s*=\\s*\"(initiator|recipient)\"")
 
