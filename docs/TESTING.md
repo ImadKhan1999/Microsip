@@ -44,4 +44,4 @@ Record every run here (newest first): date, build/run number, device + Android v
 
 | Date | Build | Device | Server | Result |
 |------|-------|--------|--------|--------|
-| 2026-10-22 | CI run 1+ | – | – | Unit tests + build only (no device available to the agent). See PROGRESS_LOG.md. |
+| 2026-10-22 | CI run 6 | – | – | 18/18 unit tests pass, debug + release APKs build, lint runs. No device test yet. |

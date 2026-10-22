@@ -59,3 +59,10 @@ commands, results, problems.
 * `compileDebugKotlin` failed: `onAccountRegistrationStateChanged`, `onCallStateChanged`, `onNotifyReceived`
   "override nothing". Cause: commit f2ee8a1 changed their `String` params to `String?`, but Linphone annotates them
   `@NonNull`, so the nullable signatures no longer match. Reverted to `String` (that was run 1's compiling state).
+
+## 2026-10-22 15:03 UTC — Claude — CI run 6: GREEN
+
+* Commit 9b8b629, PR #1 run 6 (https://github.com/ImadKhan1999/Microsip/actions/runs/39799930796): unit tests
+  (18/18), assembleDebug + assembleRelease, lint all passed in ~7 minutes.
+* Artifact `MicroSIP-apk-6` (283 MB zip: universal + 4 per-ABI release APKs + universal debug APK).
+* Not yet run on a device. Next: manual test plan in TESTING.md.

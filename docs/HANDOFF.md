@@ -10,8 +10,8 @@ _Last updated: 2026-10-22 by Claude (cloud session, project thread "MicroSIP And
 
 ## State
 
-* Milestone 1 (complete app skeleton with all major MicroSIP features wired to Linphone) is written.
-  See PROGRESS_LOG.md for the CI result of the latest commit.
+* Milestone 1 is written and **CI is green** (run 6, commit 9b8b629): app compiles against Linphone 5.5.35, unit tests pass, APKs are produced.
+  See PROGRESS_LOG.md for the history of CI results.
 * Nothing has been tested on a real phone or PBX yet. FEATURES.md marks code-complete features ✅ but TESTING.md
   holds the verified results. **The next most valuable step is running the manual test plan (TESTING.md) on a
   device with a real SIP account and logging results.**
