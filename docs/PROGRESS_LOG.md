@@ -91,3 +91,11 @@ commands, results, problems.
 * Lesson: GitHub prints a step's `env:` block before `::add-mask::` runs, so a password passed through a
   dispatch input shows in the log. Use the `SIP_PASSWORD` repository secret for future runs (CI job `sip-smoke`).
 * Still to do: test the APK itself on a device with this account (registration, calls, BLF, chat).
+
+## 2026-10-22 19:00 UTC — Claude — First install on a real phone
+
+* CI `android.yml` now also publishes a pre-release on manual (workflow_dispatch) runs, so PR builds can be
+  downloaded without a GitHub login. Dispatched on the PR branch -> release v0.1.12.
+* Installed via adb from Imad's Windows PC (Remote Control session): Infinix X6873, Android 15,
+  `MicroSIP-0.1.12-universal-release.apk`, `adb install -r -g` -> Success. Launched; process alive after 8 s,
+  no FATAL/AndroidRuntime entries in logcat. Next: account setup + real calls on the device.
