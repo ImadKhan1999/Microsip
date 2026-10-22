@@ -620,7 +620,7 @@ object SipManager {
     // ---------------------------------------------------------------- listener
 
     private val listener = object : CoreListenerStub() {
-        override fun onAccountRegistrationStateChanged(core: Core, account: Account, state: RegistrationState?, message: String?) {
+        override fun onAccountRegistrationStateChanged(core: Core, account: Account, state: RegistrationState?, message: String) {
             Log.i(TAG, "Registration ${accountLabel(account)}: $state $message")
             accountsVersion.value++
             if (state == RegistrationState.Failed) toasts.tryEmit("${accountLabel(account)}: ${registrationText(account)}")
@@ -632,7 +632,7 @@ object SipManager {
             accountsVersion.value++
         }
 
-        override fun onCallStateChanged(core: Core, call: Call, state: Call.State?, message: String?) {
+        override fun onCallStateChanged(core: Core, call: Call, state: Call.State?, message: String) {
             Log.i(TAG, "Call ${call.remoteAddress.asStringUriOnly()} -> $state ($message)")
             when (state) {
                 Call.State.IncomingReceived -> onIncoming(call)
@@ -685,7 +685,7 @@ object SipManager {
 
         override fun onNotifyPresenceReceived(core: Core, linphoneFriend: Friend) { contactsVersion.value++ }
 
-        override fun onNotifyReceived(core: Core, linphoneEvent: Event, notifiedEvent: String?, body: Content?) {
+        override fun onNotifyReceived(core: Core, linphoneEvent: Event, notifiedEvent: String, body: Content?) {
             if (notifiedEvent != "dialog") return
             val uri = blfEvents.entries.firstOrNull { it.value == linphoneEvent }?.key
                 ?: linphoneEvent.resource?.asStringUriOnly() ?: return

@@ -34,5 +34,5 @@ _Last updated: 2026-10-22 by Claude (cloud session, project thread "MicroSIP And
   `docs/reference/linphone-sdk-5.5-api.txt`.
 * Linphone setters that return `int` must be called as `setX()` in Kotlin (DR-5).
 * All `SipManager` calls must run on the main thread.
-* Linphone listener overrides: declare Java `String` parameters as nullable (`String?`) — Kotlin inserts null
-  checks on non-null parameters and Linphone may pass null.
+* Linphone listener `String` parameters are annotated `@NonNull`: override them as `String` (a `String?` override
+  fails with "overrides nothing").

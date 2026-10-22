@@ -53,3 +53,9 @@ commands, results, problems.
   DialogInfo cases give the expected result.
 * CI trigger changed: pushes to non-main branches no longer build on `push` (they build via their PR) to stop
   duplicate runs.
+
+## 2026-10-22 14:55 UTC — Claude — CI run 5 result
+
+* `compileDebugKotlin` failed: `onAccountRegistrationStateChanged`, `onCallStateChanged`, `onNotifyReceived`
+  "override nothing". Cause: commit f2ee8a1 changed their `String` params to `String?`, but Linphone annotates them
+  `@NonNull`, so the nullable signatures no longer match. Reverted to `String` (that was run 1's compiling state).
