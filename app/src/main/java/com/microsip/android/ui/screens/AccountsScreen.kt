@@ -201,7 +201,7 @@ private fun Field(
     label: String, value: String, hint: String? = null, type: KeyboardType = KeyboardType.Text, onChange: (String) -> Unit,
 ) = OutlinedTextField(
     value = value, onValueChange = onChange, label = { Text(label) }, singleLine = true,
-    placeholder = hint?.let { { Text(it) } }, modifier = Modifier.fillMaxWidth(),
+    placeholder = if (hint != null) { { Text(hint) } } else null, modifier = Modifier.fillMaxWidth(),
     keyboardOptions = KeyboardOptions(keyboardType = type),
 )
 

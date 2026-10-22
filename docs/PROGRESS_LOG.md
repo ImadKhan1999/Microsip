@@ -1,0 +1,43 @@
+# Progress log
+
+Append-only. Newest entries at the bottom. Format: `## YYYY-MM-DD HH:MM UTC — agent — title`, then what/why,
+commands, results, problems.
+
+## 2026-10-22 14:22 UTC — Claude (cloud session) — Project start
+
+* Request (Imad Khan): build a full-featured MicroSIP-like SIP softphone for Android from scratch, deliver an APK,
+  document every step so several AIs can continue.
+* Repo was empty. Created `main` with a README (initial commit `bf87c3a`) so PRs have a base. Work happens on
+  branch `claude/project-thread-qrvfne`.
+
+## 2026-10-22 14:23 UTC — Claude — Environment check
+
+* Sandbox has JDK 21, Gradle 8.14.3, no Android SDK.
+* `dl.google.com` (Android SDK + Google Maven) and `download.linphone.org` are **blocked** by the sandbox egress
+  proxy (HTTP 403 on CONNECT). Maven Central and services.gradle.org work.
+* Consequence: cannot build locally → all builds run on GitHub Actions (ARCHITECTURE.md DR-3).
+
+## 2026-10-22 14:24 UTC — Claude — Linphone API probe on CI
+
+* Pushed `.github/workflows/api-probe.yml` that downloads the newest Linphone SDK AAR and runs `javap` on the core
+  classes; read the job log through the GitHub MCP.
+* Results: latest stable `5.5.35`, pre-release `5.5.37-pre.1`; AAR is 61 MB with arm64-v8a, armeabi-v7a, x86,
+  x86_64. Runner has platforms android-34…37 and build-tools 34–37.
+* Saved the API surface to `docs/reference/linphone-sdk-5.5-api.txt`; added `tools/dump-linphone-api.sh`.
+* The probe workflow exited 1 at the end (asked javap for a class that does not exist, `FirewallPolicy`) – harmless,
+  output was complete. Workflow removed afterwards.
+* First run sat in "queued" ~3 minutes before a runner picked it up.
+
+## 2026-10-22 14:30–14:41 UTC — Claude — App implementation (milestone 1)
+
+* Decisions: Linphone SDK 5.5.35 (DR-1), Compose UI (DR-2), shared signing key (DR-4), see ARCHITECTURE.md.
+* Gradle: wrapper 8.11.1 (generated locally with `gradle wrapper`), AGP 8.7.3, Kotlin 2.0.21, compileSdk 35,
+  minSdk 26, ABI splits + universal APK.
+* Code written (see ARCHITECTURE.md for the map): SipManager, Prefs, AccountConfig, DialString, DialogInfo,
+  DeviceContacts, SipService, Notifications, CallActionReceiver, BootReceiver, MainActivity/AppRoot,
+  CallActivity/CallScreen, Dialpad, History, Contacts, Messages, Chat, Accounts, AccountEdit, Settings, Codecs,
+  Recordings.
+* Unit tests: DialStringTest (11 cases), DialogInfoTest (7 cases).
+* CI: `.github/workflows/android.yml` – unit tests, assembleDebug + assembleRelease, lint (non-blocking),
+  artifacts, pre-release on `main`.
+* Commit `1724235` pushed; CI run #1 started.

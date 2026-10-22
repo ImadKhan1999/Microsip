@@ -82,7 +82,7 @@ fun KeyPad(onKey: (Char) -> Unit, onLongOne: (() -> Unit)? = null, dark: Boolean
                             },
                         ),
                     ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                        Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
                             Text(digit, fontSize = 28.sp, color = if (dark) Color.White else MaterialTheme.colorScheme.onSurface)
                             if (letters.isNotEmpty()) Text(
                                 letters, fontSize = 10.sp, letterSpacing = 1.sp,
