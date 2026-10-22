@@ -77,3 +77,17 @@ commands, results, problems.
   throw-away contact then unregisters it) and CI job `sip-smoke` which runs it when the `SIP_PASSWORD`
   repository secret exists. Account details other than the password are in the workflow env.
 * README: mapping table from desktop MicroSIP account fields to this app's fields.
+
+## 2026-10-22 16:55 UTC — Claude — Real SIP server test: PASS on TLS, TCP, UDP
+
+* Imad asked to "push for test then remove it": a manual workflow_dispatch workflow (`sip-smoke.yml`) was pushed
+  to main (dispatch needs the file on the default branch), run once against the PR branch with the password as an
+  input, then deleted from main and from this branch. Run: https://github.com/ImadKhan1999/Microsip/actions/runs/39814922970
+* Results (server `sipswitch`, realm sip.sipup.org, MD5 digest, no qop):
+  * TLS 162.19.138.146:5061: TLSv1.3, 401 -> 200 OK, registered and unregistered cleanly.
+    The server certificate is NOT valid for the IP address, so TLS verification must stay off
+    (app default `verifyTls=false`), or the account must use a hostname the certificate covers.
+  * TCP 5060 and UDP 5060: 401 -> 200 OK, registered and unregistered cleanly.
+* Lesson: GitHub prints a step's `env:` block before `::add-mask::` runs, so a password passed through a
+  dispatch input shows in the log. Use the `SIP_PASSWORD` repository secret for future runs (CI job `sip-smoke`).
+* Still to do: test the APK itself on a device with this account (registration, calls, BLF, chat).
