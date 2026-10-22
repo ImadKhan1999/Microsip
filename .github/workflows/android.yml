@@ -1,0 +1,85 @@
+name: Android CI
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Unit tests
+        run: ./gradlew --no-daemon --stacktrace testDebugUnitTest -PversionCode=${{ github.run_number }}
+
+      - name: Build APKs
+        run: ./gradlew --no-daemon --stacktrace assembleDebug assembleRelease -PversionCode=${{ github.run_number }}
+
+      - name: Lint
+        run: ./gradlew --no-daemon lintDebug -PversionCode=${{ github.run_number }}
+        continue-on-error: true
+
+      - name: Collect outputs
+        run: |
+          mkdir -p out
+          for f in app/build/outputs/apk/release/*.apk; do
+            n=$(basename "$f" | sed "s/app-/MicroSIP-0.1.${{ github.run_number }}-/")
+            cp "$f" "out/$n"
+          done
+          cp app/build/outputs/apk/debug/app-universal-debug.apk "out/MicroSIP-0.1.${{ github.run_number }}-universal-debug.apk"
+          ls -la out
+          {
+            echo "### APKs"
+            echo '| file | size |'
+            echo '|---|---|'
+            for f in out/*.apk; do echo "| $(basename $f) | $(du -h $f | cut -f1) |"; done
+            echo
+            echo "Linphone SDK: $(grep -o 'linphone-sdk-android:[^\"]*' app/build.gradle.kts)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MicroSIP-apk-${{ github.run_number }}
+          path: out/*.apk
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reports-${{ github.run_number }}
+          path: |
+            app/build/reports
+            app/build/test-results
+          if-no-files-found: ignore
+
+      - name: Publish release (main branch and tags)
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('v0.1.{0}', github.run_number) }}
+          name: MicroSIP for Android ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('0.1.{0}', github.run_number) }}
+          target_commitish: ${{ github.sha }}
+          prerelease: true
+          files: out/*.apk
+          body: |
+            Automated build from ${{ github.sha }}.
+            Install **MicroSIP-…-universal-release.apk** on any phone, or the arm64-v8a file for most modern phones (smaller).
+            See docs/HANDOFF.md for the current feature status.
