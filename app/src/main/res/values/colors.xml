@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ImadLabs brand tokens (ImadKhan1999/Graphics brand/colors/tokens.json) -->
+    <color name="brand">#0066FF</color>
+    <color name="accent">#00F5A0</color>
+    <color name="background">#070B14</color>
+    <color name="launcher_bg">#070B14</color>
+</resources>
