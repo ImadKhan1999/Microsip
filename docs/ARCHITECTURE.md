@@ -24,7 +24,7 @@
 └─────────────────────────────────────────────┘   └───────────────────────────────────────┘
 ```
 
-Package: `com.microsip.android` (app/src/main/java/com/microsip/android).
+Package and applicationId: `com.imadlabs.icall` (app/src/main/java/com/imadlabs/icall). Until 2026-10-25 it was `com.microsip.android` (see DR-7).
 
 ## How state flows
 
@@ -42,7 +42,7 @@ Package: `com.microsip.android` (app/src/main/java/com/microsip/android).
 |------|-------|
 | Accounts, auth info, codec enable/order, NAT policy | Linphone config `files/linphonerc` (written by the SDK) |
 | Call history, chat messages, friends (contacts) | Linphone sqlite DB in app files (managed by the SDK) |
-| App settings, per-account extras (label, dial prefix, encryption, voicemail), BLF list | SharedPreferences `microsip` (`Prefs`) |
+| App settings, per-account extras (label, dial prefix, encryption, voicemail), BLF list | SharedPreferences `icall` (`Prefs`) |
 | Call recordings | `files/recordings/*.wav` (shared through FileProvider) |
 
 Per-account extras are keyed by the Linphone `AccountParams.idkey`, which the app sets to a UUID on creation.
@@ -95,3 +95,14 @@ Per-account extras are keyed by the Linphone `AccountParams.idkey`, which the ap
 ### DR-6: TLS certificate verification default off
 * Many PBXs use self-signed certificates; desktop MicroSIP does not verify by default either. Users can turn on
   "Verify TLS server certificates" in Settings.
+
+## DR-7: Rebrand to iCall by ImadLabs (2026-10-25)
+
+* Imad's request: the app is **iCall**, brand **ImadLabs**, Telegram https://t.me/ImadLabs, graphics from
+  https://github.com/ImadKhan1999/Graphics.
+* applicationId/package changed `com.microsip.android` → `com.imadlabs.icall`. Consequence: it installs as a new app
+  next to the old test build (uninstall the old one); settings/accounts from the old build are not migrated (only
+  test data existed).
+* UI follows the ImadLabs design system: dark-first theme (Deep Void #070B14, Cyber Mint #00F5A0 primary, Sky
+  Diamond #38BDF8 secondary), user can pick Dark/Light/System in Settings › Appearance.
+* Fonts (Plus Jakarta Sans / Inter) are not bundled yet; the system font is used.

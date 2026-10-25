@@ -1,18 +1,23 @@
 # Handoff notes
 
-_Last updated: 2026-10-22 by Claude (cloud session, project thread "MicroSIP Android app from scratch")._
+_Last updated: 2026-10-25 by Claude (cloud session, project thread "MicroSIP Android app from scratch")._
+
+The app is branded **iCall by ImadLabs** (package `com.imadlabs.icall`). Brand rules and assets: docs/BRANDING.md.
 
 ## Where things are
 
 * Branch with all work: `claude/project-thread-qrvfne` → PR into `main`.
-* APKs: GitHub Actions artifact `MicroSIP-apk-<run>` on every push; pre-release `v0.1.<run>` on every push to `main`.
+* APKs: GitHub Actions artifact `iCall-apk-<run>` on every push; pre-release `v0.1.<run>` on every push to `main` and on every manual
+  (workflow_dispatch) run of `android.yml` on any branch.
 * Start reading: `docs/README.md`, then ARCHITECTURE.md (code map + decisions), FEATURES.md (status matrix).
 
 ## State
 
 * Milestone 1 is written and **CI is green** (run 6, commit 9b8b629): app compiles against Linphone 5.5.35, unit tests pass, APKs are produced.
   See PROGRESS_LOG.md for the history of CI results.
-* Nothing has been tested on a real phone or PBX yet. FEATURES.md marks code-complete features ✅ but TESTING.md
+* Registration was verified against a real server (sipup.org) over TLS/TCP/UDP with tools/sip_register_test.py, and
+  the APK was installed and launched on an Infinix X6873 (Android 15). Calls on a device are not verified yet.
+* Earlier note: nothing beyond that has been tested on a real phone or PBX yet. FEATURES.md marks code-complete features ✅ but TESTING.md
   holds the verified results. **The next most valuable step is running the manual test plan (TESTING.md) on a
   device with a real SIP account and logging results.**
 

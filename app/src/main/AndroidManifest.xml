@@ -30,13 +30,13 @@
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
 
     <application
-        android:name=".MicroSipApp"
+        android:name=".ICallApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MicroSIP"
+        android:theme="@style/Theme.ICall"
         tools:targetApi="35">
 
         <activity
@@ -75,7 +75,7 @@
             android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:excludeFromRecents="true"
-            android:taskAffinity="com.microsip.android.call"
+            android:taskAffinity="com.imadlabs.icall.call"
             android:screenOrientation="portrait"
             tools:ignore="DiscouragedApi,LockedOrientationActivity" />
 

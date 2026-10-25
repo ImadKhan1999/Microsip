@@ -15,5 +15,5 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "MicroSIP"
+rootProject.name = "iCall"
 include(":app")

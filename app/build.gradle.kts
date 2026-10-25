@@ -8,11 +8,11 @@ plugins {
 val ciVersionCode = (project.findProperty("versionCode") as String?)?.toIntOrNull() ?: 1
 
 android {
-    namespace = "com.microsip.android"
+    namespace = "com.imadlabs.icall"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.microsip.android"
+        applicationId = "com.imadlabs.icall"
         minSdk = 26
         targetSdk = 35
         versionCode = ciVersionCode

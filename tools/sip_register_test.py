@@ -128,7 +128,7 @@ def main():
             f"CSeq: {cseq} REGISTER\r\n"
             f"Contact: <sip:{contact_user}@{lip}:{lport};transport={a.transport}>\r\n"
             f"Expires: {expires}\r\n"
-            f"User-Agent: MicroSIP-Android-smoketest\r\n"
+            f"User-Agent: iCall-Android-smoketest\r\n"
         )
         if auth:
             msg += auth + "\r\n"

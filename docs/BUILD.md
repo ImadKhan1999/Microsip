@@ -3,12 +3,12 @@
 ## Get an APK without building
 
 * Every push runs **Android CI** (`.github/workflows/android.yml`). Open the run in the repo's *Actions* tab and
-  download the `MicroSIP-apk-<run>` artifact (zip with the APKs).
+  download the `iCall-apk-<run>` artifact (zip with the APKs).
 * Every push to `main` also publishes a GitHub pre-release `v0.1.<run>` with the APKs attached
   (repo → *Releases*).
 * Which file to install:
-  * `MicroSIP-0.1.N-universal-release.apk` – works on every phone (biggest).
-  * `MicroSIP-0.1.N-arm64-v8a-release.apk` – almost all phones from 2017 onwards (smaller).
+  * `iCall-0.1.N-universal-release.apk` – works on every phone (biggest).
+  * `iCall-0.1.N-arm64-v8a-release.apk` – almost all phones from 2017 onwards (smaller).
   * `…-universal-debug.apk` – same app with debugging enabled.
 * All APKs are signed with the shared key in the repo, so a newer build installs over an older one.
 

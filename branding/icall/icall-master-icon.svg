@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+    <!-- iCall by ImadLabs: HexaCore Matrix chassis with a handset in the quantum aperture and the Cyber Mint "L" pathway. -->
+    <defs>
+        <linearGradient id="g_top" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#38BDF8"/><stop offset="100%" stop-color="#0284C7"/></linearGradient>
+        <linearGradient id="g_left" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0284C7"/><stop offset="100%" stop-color="#0B1930"/></linearGradient>
+        <linearGradient id="g_right" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0066FF"/><stop offset="100%" stop-color="#0284C7"/></linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="#070B14" rx="224"/>
+    <rect x="12" y="12" width="1000" height="1000" rx="214" fill="none" stroke="#1E293B" stroke-width="4"/>
+    <g transform="translate(212, 164) scale(3.0)">
+        <polygon points="100,20 180,66 100,112 20,66" fill="url(#g_top)"/>
+        <polygon points="20,76 100,122 100,212 20,166" fill="url(#g_left)"/>
+        <polygon points="100,122 180,76 180,166 100,212" fill="url(#g_right)"/>
+        <polygon points="100,44 156,76 100,108 44,76" fill="#050A14" opacity="0.92"/>
+        <!-- Handset (Material "call" glyph) in Quantum Core mint -->
+        <g transform="translate(76.6, 52.6) scale(1.95)">
+            <path fill="#00FFC2" d="M6.62,10.79c1.44,2.83 3.76,5.14 6.59,6.59l2.2,-2.2c0.27,-0.27 0.67,-0.36 1.02,-0.24 1.12,0.37 2.33,0.57 3.57,0.57 0.55,0 1,0.45 1,1V20c0,0.55 -0.45,1 -1,1 -9.39,0 -17,-7.61 -17,-17 0,-0.55 0.45,-1 1,-1h3.5c0.55,0 1,0.45 1,1 0,1.25 0.2,2.45 0.57,3.57 0.11,0.35 0.03,0.74 -0.25,1.02l-2.2,2.2z"/>
+        </g>
+        <path d="M 100 122 L 100 182 L 152 152" stroke="#00F5A0" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M 100 125 L 100 180 L 150 151" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.8"/>
+        <circle cx="152" cy="152" r="5" fill="#00FFC2"/>
+    </g>
+</svg>

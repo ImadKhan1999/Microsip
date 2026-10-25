@@ -7,6 +7,7 @@ Read these in order before changing anything:
 |------|---------------|
 | [HANDOFF.md](HANDOFF.md) | Current state, what works, what is next. **Update at the end of every work session.** |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | How the app is put together, and why (decision records). |
+| [BRANDING.md](BRANDING.md) | iCall / ImadLabs name, icon, colours, Telegram link, welcome popup. |
 | [FEATURES.md](FEATURES.md) | MicroSIP feature parity matrix with status per feature. |
 | [BUILD.md](BUILD.md) | How to build the APK locally and in CI, signing, versions. |
 | [TESTING.md](TESTING.md) | How to test, test plan, and recorded results. |

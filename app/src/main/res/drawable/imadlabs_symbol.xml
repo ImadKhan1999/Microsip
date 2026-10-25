@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ImadLabs HexaCore Matrix symbol (from ImadKhan1999/Graphics apps/template/template-master-icon.svg). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="100dp" android:height="116dp" android:viewportWidth="200" android:viewportHeight="232">
+    <path android:pathData="M100,20 L180,66 L100,112 L20,66 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="20" android:startY="20" android:endX="180" android:endY="112"
+                android:startColor="#FF38BDF8" android:endColor="#FF0284C7" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M20,76 L100,122 L100,212 L20,166 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="20" android:startY="76" android:endX="100" android:endY="212"
+                android:startColor="#FF0284C7" android:endColor="#FF0B1930" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M100,122 L180,76 L180,166 L100,212 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="100" android:startY="76" android:endX="180" android:endY="212"
+                android:startColor="#FF0066FF" android:endColor="#FF0284C7" />
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#050A14" android:fillAlpha="0.9" android:pathData="M100,50 L145,76 L100,102 L55,76 Z" />
+    <path android:fillColor="#00FFC2" android:pathData="M86,76 a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M93,76 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z" />
+    <path android:strokeColor="#00F5A0" android:strokeWidth="12" android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M100,122 L100,182 L152,152" />
+    <path android:strokeColor="#FFFFFF" android:strokeAlpha="0.8" android:strokeWidth="4" android:strokeLineCap="round"
+        android:strokeLineJoin="round" android:pathData="M100,125 L100,180 L150,151" />
+    <path android:fillColor="#00FFC2" android:pathData="M147,152 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0 Z" />
+</vector>

@@ -1,6 +1,7 @@
-# MicroSIP for Android
+# iCall by ImadLabs
 
-A MicroSIP-style SIP softphone for Android: multiple SIP accounts, calls with hold/transfer/conference/recording,
+**iCall** is a SIP softphone for Android by **ImadLabs** (Telegram: https://t.me/ImadLabs), modelled on desktop
+MicroSIP: multiple SIP accounts, calls with hold/transfer/conference/recording,
 DTMF, contacts with presence and BLF, call history, SIP messaging, codec control, TLS + SRTP/ZRTP, and a
 background service so calls ring when the app is closed.
 

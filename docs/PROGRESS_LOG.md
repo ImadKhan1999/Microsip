@@ -99,3 +99,13 @@ commands, results, problems.
 * Installed via adb from Imad's Windows PC (Remote Control session): Infinix X6873, Android 15,
   `MicroSIP-0.1.12-universal-release.apk`, `adb install -r -g` -> Success. Launched; process alive after 8 s,
   no FATAL/AndroidRuntime entries in logcat. Next: account setup + real calls on the device.
+
+## 2026-10-25 20:40 UTC — Claude — Rebrand: iCall by ImadLabs
+
+* Request from Imad (project chat): rename the app to **iCall**, brand **ImadLabs**, add the Telegram link
+  https://t.me/ImadLabs to About and to a first-run popup with "don't show again", and use the graphics repo
+  https://github.com/ImadKhan1999/Graphics for icon and UI.
+* Done: package/applicationId `com.imadlabs.icall` (sources moved), app name iCall, user agent `iCall-Android`,
+  CI artifact/APK names `iCall-…`, new adaptive + themed launcher icon, ImadLabs dark theme with Dark/Light/System
+  choice, branded call screen background, About screen, welcome popup. Details in docs/BRANDING.md and DR-7.
+* Not verified locally (sandbox can't build); see the CI run for this commit.
