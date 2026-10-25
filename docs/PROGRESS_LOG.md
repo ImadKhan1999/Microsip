@@ -109,3 +109,7 @@ commands, results, problems.
   CI artifact/APK names `iCall-…`, new adaptive + themed launcher icon, ImadLabs dark theme with Dark/Light/System
   choice, branded call screen background, About screen, welcome popup. Details in docs/BRANDING.md and DR-7.
 * Not verified locally (sandbox can't build); see the CI run for this commit.
+* 20:45 UTC: CI green for e91b35f (PR run and manual run → pre-release v0.1.15, APKs named iCall-0.1.15-*.apk).
+  Installed on Infinix X6873 via adb: old com.microsip.android uninstalled, iCall installed (`-r -g`), launched,
+  process alive after 8 s, MainActivity resumed, no errors in logcat. Welcome popup not yet visually confirmed
+  (phone screen was locked).
